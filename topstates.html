@@ -1,0 +1,55 @@
+<script>
+
+var thisGuess, guessedList, topTen, guessesLeft;
+
+guessedList = "You have correctly guessed: ";
+
+topTen = ["California", "Texas", "New York", "Florida", "Illinois", "Pennsylvania", "Ohio", "Georgia", "Michigan", "North Carolina"];
+
+guessesLeft = 10;
+
+var firstGuess = function() {
+	thisGuess = prompt("Can you guess the ten most highly populated U.S. states? Please enter the name of a state. You have ten chances.")
+	return thisGuess;
+};
+
+
+var moreGuess = function() {
+	thisGuess = prompt(guessedList + ". Please guess again.");
+	return thisGuess;
+};
+
+
+var checkGuess = function(thisGuess) {
+	if (topTen.indexOf(thisGuess) > -1) {
+		return true;
+	}
+	else {
+		return false;
+	}
+};
+
+
+var reportGuess = function() {
+	if (checkGuess(thisGuess)) {
+		guessedList += thisGuess;
+		guessedList += " ";
+		alert("Correct! " + guessedList);
+	}
+	else {
+		alert("Incorrect! " + guessedList);
+	}
+};
+
+firstGuess();
+reportGuess();
+
+while (guessesLeft > 1) {
+	moreGuess();
+	reportGuess();
+	guessesLeft--;
+}
+
+alert("Game over! " + guessedList);
+
+</script>
